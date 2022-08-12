@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import '../CSS/Home.css';
-import logo from './TelaPrincipal.png';
 import'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
@@ -9,29 +8,31 @@ import {useHistory} from 'react-router-dom';
 import{useCallback} from 'react'
 import { Password } from 'primereact/password';
 import ButtonAppBar from './appBar.js';
+import { Calendar } from 'primereact/calendar';
+import DataTableContextMenuDemo from './DataMenu.js';
 
 
 
 const Page= ()=> {
     const [value1, setValue1] = useState(null);
     const history = useHistory();
-  const irParaCadastro = useCallback(() => history.push('/Cadastro'), [history]);
-    const irParaResumo = useCallback(() => history.push('/Resumo'), [history]);
+    const handleOnClick = useCallback(() => history.push('/Login'), [history]);
+    var [date, setDate] = useState(null); 
+  
   return (
     <div className="Home" >
       <body className="Home-header">
        <ButtonAppBar/>
-          <h1 className="h1-style">Módulo 2</h1>
+          <h1 className="h1-style">Resumo Diário</h1>
       <div className="home-button">
          <span className="p-buttonset">
-                        <Button label="Cadastrar" className="p-button-rounded p-button-success" icon="pi pi-arrow-circle-right" onClick={irParaCadastro}/>
+                        <Calendar dateFormat="dd/mm/yy" value={date} onChange={(e) => setDate(e.value)}></Calendar>
             </span>
       </div>
     <div className="home-button">
               <span className="p-buttonset">
-                        <Button label="Resumo" className="p-button-rounded p-button-success" icon="pi pi-arrow-circle-right" onClick={irParaResumo}/>
+                        <DataTableContextMenuDemo/>
             </span>
-        <div className="footer"></div>
     </div>
     
       </body>
@@ -40,6 +41,7 @@ const Page= ()=> {
   );
 }
 
+//ainda n tem dados da tabela porque não fizemos a integração com o back
+
 export default Page;
 
-//linha 24 <Routes />

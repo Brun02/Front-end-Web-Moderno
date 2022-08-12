@@ -6,6 +6,7 @@ import Confirmar from './Pages/Confirmar';
 import Recuperar from './Pages/Recuperar';
 import Cadastro from './Pages/Cadastro';
 import Cardapio from './Pages/Cardapio';
+import Resumo from './Pages/Resumo';
 
 export default()=>{
    
@@ -34,6 +35,10 @@ export default()=>{
         <Route exact path="/Cardapio">
            <Cardapio />
         </Route>     
+
+        <Route exact path="/Resumo">
+          <Resumo />>            
+        </Route>
         
      </Switch>
    );
